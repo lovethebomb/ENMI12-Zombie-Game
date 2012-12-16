@@ -1,0 +1,50 @@
+// admin/index.jade - main view
+extends layout
+
+block head
+	script(src='/js/admin.js')
+block title
+	h1= title
+block content
+	div
+		table.table.table-hover.table-condensed
+			tr
+				th Screen Name
+				th Image
+				th Access Token Key
+				th Access Token Secret
+
+			each zombie in zombies
+				tr
+					td #{zombie.twitter_screen_name}
+					td #{zombie.img_url}
+					td #{zombie.token_key}
+					td #{zombie.token_secret}
+	br
+	hr
+	h2 Add a Zombie
+	div
+		form(action="/admin/zombie/add", method="post")
+			table(border="1") 
+				tr
+					td Zombie Twitter ID: 
+					td 
+						input(name="item[twitter_uid]", type="textbox", placeholder="1234567")
+				tr
+					td Zombie Twitter Screen Name: 
+					td 
+						input(name="item[twitter_screen_name]", type="textbox", placeholder="@enmi_zombie")
+				tr
+					td Zombie image URL: 
+					td 
+						input(name="item[img_url]", type="textbox", placeholder="zombie.jpg")
+				tr
+					td API Token Access Key: 
+					td 
+						input(name="item[token_key]", type="textbox",  size="60", placeholder="MySuperTokenKey")
+				tr
+					td API Token Acess Secret: 
+					td 
+						input(name="item[token_secret]", type="textbox",  size="60", placeholder="MySuperTokenSecret")
+				
+			input(type="submit", value="Add zombie")

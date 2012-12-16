@@ -1,0 +1,17 @@
+// questions.jade
+form(action="/admin/question/add", method="post")
+		table(border="1") 
+			tr
+				td Zombie Twitter ID: 
+				td 
+					input(name="item[text]", type="textbox", placeholder="1234567")
+			tr
+				td Zombie Twitter Screen Name: 
+				td 
+					input(name="item[text]", type="textbox", placeholder="@enmi_zombie")
+			tr
+				td Zombie image URL: 
+				td 
+					input(name="item[screen_name]", type="textbox", placeholder="zombie.jpg")
+			
+		input(type="submit", value="Add item")

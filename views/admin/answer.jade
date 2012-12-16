@@ -1,0 +1,26 @@
+// admin/question.jade - main view
+extends layout
+
+block head
+	script(src='/js/admin.js')
+
+block title
+	h1= title
+
+block content
+	div
+		table.table.table-hover
+			tr
+				th AnswerID
+				th TweetID
+				th Answer
+				th QuestionID
+			each answer in answers
+				tr
+					td #{answer._id}
+					td #{answer.tweet}
+					td #{answer.answer}
+					td #{answer.question}
+
+
+		

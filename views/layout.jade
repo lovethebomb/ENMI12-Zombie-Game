@@ -1,0 +1,24 @@
+// main layout
+doctype 5
+html
+	head
+		title #{title}
+		meta(name='Content-Type', content='text/html', charset='utf-8')
+		script(src='http://code.jquery.com/jquery.min.js')
+		link(rel='stylesheet', href='/css/reset.css')
+		link(rel='stylesheet', href='/css/style.css')
+		link(rel="shortcut icon", type="image/png", href="/images/logo.png")
+
+		block head
+	body
+		div#logo
+		header
+			block title
+		div.wrapper
+			block content
+			
+			footer
+				p Made with <span>&hearts;</span> & NodeJS
+				block footer
+
+	script(src='/js/ga.js')		

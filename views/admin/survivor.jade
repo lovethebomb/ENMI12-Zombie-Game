@@ -1,0 +1,21 @@
+// admin/index.jade - main view
+extends layout
+
+block head
+	script(src='/js/admin.js')
+	
+block title
+	h1= title
+block content
+	div
+		ul
+			each survivor in survivors
+				//- li #{survivor._id}
+				//- li #{survivor.twitter_uid}
+				li 
+					span #{survivor.twitter_screen_name}
+					br
+					span #{survivor.twitter_name}
+					img(src=survivor.twitter_profile_img_url)
+
+		

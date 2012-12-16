@@ -1,0 +1,25 @@
+{
+	"name": "enmi-zombies",
+	"version": "0.7",
+	"description": "#enmsi zombie game",
+	"author": {
+		"name": "CDNLAB <3",
+		"email": "zombie-game@zombie.cdnl.me",
+		"url": "http://zombie.cdnl.me"
+	},
+	"private": true,
+	"main": "app.js",
+	"start": "node app",
+	"dependencies": {
+		"express": "3.0.3",
+		"jade": "*",
+		"ntwitter": "*",
+		"mongoose ": "*",
+		"socket.io": "*",
+		"cli-color": "*"
+	},
+	"repository" : { 
+		"type" : "git",
+		"url" : "http://github.com/lovethebomb/enmi-zombies.git"
+	}
+},

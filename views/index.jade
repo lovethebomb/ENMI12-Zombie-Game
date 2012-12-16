@@ -1,0 +1,51 @@
+// index view
+doctype 5
+html
+	head
+		title #{title}
+		meta(name='Content-Type', content='text/html', charset='utf-8')
+		script(src='http://code.jquery.com/jquery.min.js')
+		link(rel='stylesheet', href='/css/reset.css')
+		link(rel='stylesheet', href='/css/style.css')
+		link(rel="shortcut icon", type="image/png", href="/images/logo.png")
+
+		block head
+	body
+		header
+			div#headerBackground
+				img(id='logo', src="/images/logo.png", alt="Logo")
+		section#corps
+			section#introduction
+				article
+					h1 Mais il est chanmé 
+						span#jeu ce jeu 
+						!
+					p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				div#participer
+					div#bouton
+						img(id='oiseau', src="/images/oiseau.png", alt="Oiseau")
+						a.twitter-follow-button(href="https://twitter.com/enmi_mczombie", data-show-count="false", data-lang="en", data-size="large") Participer au jeu
+			div#compteurAutoMargin
+				div#compteurWrapper
+					div
+						div#compteur
+							h3 Temps restant
+							span 02
+							span :
+							span 35
+							span :
+							span 24
+			section#liste
+
+				each survivor in survivors
+					article.listItem
+						- if(survivor.zombies == 10)
+							div.overlay
+						h1 @#{survivor.screen_name}
+						img(src='#{survivor.img}', alt="#{survivor.screen_name}", width="140", height="140")
+						footer
+							span.leftScore #{survivor.zombies}
+							span.rightScore #{survivor.zombies_killed}
+		footer.credits
+			p Made with <span>&hearts;</span> & NodeJS
+	script(src='/js/ga.js')		

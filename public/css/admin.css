@@ -1,0 +1,414 @@
+body{
+	width:100%;
+	font-family:Helvetica, Arial, sans-serif;
+	font-size:1em;
+	color:white;
+	background-color:#333;
+ 	line-height: 1.4em;
+}
+
+header{
+	border-bottom:1px solid black;
+	height:160px;
+	text-align:center;
+	background:#004f4c;
+}
+
+#headerBackground{
+	height:160px;
+	background: url("/images/entete_gauche.png") no-repeat -10% top, url("/images/entete_droite.png") no-repeat 110% top;
+}
+
+#headerBackground img{
+	position:relative;
+	top:75px;
+}
+
+#corps{
+	margin-top:120px;
+}
+
+#introduction{
+	margin:0 auto 40px auto;
+	width:960px;
+}
+
+#introduction article{
+	margin-left:5%;
+	width:500px;
+	float:left;
+}
+
+#introduction article h1{
+	font-size:1.5em;
+	margin-bottom:10px;
+
+}
+
+#introduction article p{
+font-size:0.85em;
+line-height:1.5em;
+font-weight:200;
+}
+
+
+#bouton{
+	height:91px;
+	width:226px;
+	background-image:url("/images/bouton_participer.png");
+	float:right;
+	margin:60px 5% 0 0;
+}
+
+
+
+#bouton a{
+	display:inline-block;
+	font-size:1.2em;
+	text-align:center;
+	position:relative;
+	top:9px;
+	left:41px;
+}
+
+#bouton a:link, #bouton a:visited{
+	color:white;
+	text-decoration:none;
+}
+
+#bouton a:hover, #bouton a:active{
+	color:white;
+	text-decoration:none;
+}
+
+#bouton img{
+	position:relative;
+	top:13px;
+	left:14px;
+}
+
+#bouton:hover img {
+	-webkit-animation: shift 0.5s linear;
+}
+
+@-webkit-keyframes shift {
+	0% {top: 13px}
+	50% {top:8px}
+	100%{top:13px}
+}
+
+#compteurAutoMargin {
+
+	height:130px;
+	margin:auto;
+	width:960px;
+	clear:both;
+
+}
+
+#compteurWrapper{
+	height:130px;
+	margin:0 10px 0 10px;
+	width:940px;
+	background:url("/images/tirets.png") repeat-x 0 100px;
+}
+
+#compteurWrapper div {
+	background:#333;
+	width:272px;
+	height:130px;
+	margin:auto;
+}
+
+#compteurWrapper div #compteur {
+	width:272px;
+	height:130px;
+	background:url('/images/compteur.png');
+	text-align: center;
+}
+
+#compteur h3{
+	font-size: 1.2em;
+	color: #E78100;
+	position: relative;
+	top:25px;
+	width:272px;
+}
+
+#compteur span{
+	font-size: 1.8em;
+	position: relative;
+	top: 60px;
+	margin: 0 9px 0 9px;
+}
+
+#jeu{
+	color:#E78100;
+}
+
+#liste{
+	margin:auto;
+	width:960px;
+	margin-top:40px;
+}
+
+@media screen and (max-width: 1010px) {
+
+	#headerBackground{
+	height:160px;
+	background: url("/images/entete_gauche.png") no-repeat -30% top, url("/images/entete_droite.png") no-repeat 130% top;
+}
+}
+
+@media screen and (max-width: 960px) {
+
+	#liste {
+		width:100%;
+		text-align:center;
+	}
+
+	.listItem {
+
+		text-align:left;
+
+	}
+
+	#compteurAutoMargin {
+		width:100%;
+
+	}
+
+	#compteurWrapper {
+		width:100%;
+		margin:0;
+	}
+
+	#introduction {
+		width:100%;
+		
+	}
+
+
+
+
+
+}
+
+@media screen and (max-width: 850px) {
+
+	#headerBackground{
+	height:160px;
+	background: url("/images/entete_gauche_small.png") no-repeat left top, url("/images/entete_droite_small.png") no-repeat right top;
+	}
+
+	#corps {
+		margin-top:40px;
+	}
+
+	#introduction {
+		margin:80px 0 0 0;
+	}
+
+	#introduction article {
+		float:none;
+		margin:0 auto 30px auto;
+
+	}
+
+	#bouton {
+		float:none;
+		margin:0 auto 0 auto;
+	}
+}
+
+@media screen and (max-width: 520px) {
+
+	
+	#introduction article {
+		width:440px;
+	}
+
+	#headerBackground{
+	height:160px;
+	background:none;
+	}
+
+}
+
+@media screen and (max-width: 400px) {
+
+	
+	#introduction article {
+		width:300px;
+	}
+
+}
+
+.listItem{
+	display:inline-block;
+	width:140px;
+	margin:0 10px 20px 10px;
+	background:black;
+	border-radius: 5px;
+}
+
+.listItem h1{
+	height:15px;
+	background:#338371;
+	padding:7px 0 7px 7px;
+	font-size:0.85em;
+	font-style:italic;
+	border-radius: 5px 5px 0 0;
+}
+
+.listItem footer{
+	font-size:0.85em;
+}
+
+.listItem span {
+	text-align:center;
+	height:15px;
+	padding:7px 0 7px 0;
+	display:inline-block;
+	text-indent:20px;
+}
+
+.leftScore {
+	width:69px;
+	border-right: dashed 1px #333;
+	background:url("/images/tete_de_mort.png") no-repeat 15px 6px;
+	color:#338371;
+}
+
+.rightScore {
+	width:70px;
+	background:url("/images/croix.png") no-repeat 15px 6px;
+	color:#E78100;
+}
+
+/* Admin */
+div.wrapper {
+	margin: 0 auto;
+	width: 960px;
+	padding-top: 30px;
+}
+a {
+  color: #00B7FF;
+}
+
+ul {
+	list-style-type: none;
+}
+
+ul li {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	margin-right: 10px;
+	padding: 2px;
+}
+
+ul li span {
+	font-weight: bold;
+	text-align: center;
+}
+
+ul li img {
+	display: block;
+}
+
+nav ul li a {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+nav ul li a:hover {
+	color: #00B7FF;
+	text-shadow: 2px 2px rgba(18, 18, 18, 0.5);
+}
+footer {
+	font-weight: bold;
+	color: lightgray;
+	margin: 50px auto;
+	width: 200px;
+}
+footer span {
+	color:red;
+}
+nav {
+	text-align: center;
+}
+header.admin {
+	height: 100px;
+}
+header.admin h1 {
+	padding-top: 20px;
+}
+
+div#logo {
+	position: absolute;
+	float: left;
+	width: 83px;
+	height: 74px;
+	background-size: 100%;
+	background-image:url('/images/logo.png');
+	background-repeat: no-repeat;
+	display: block;
+	margin: 10px;
+}
+
+/* Stream */
+ul#stream {
+	list-style-type: list;
+}
+
+ul#stream li {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+ul#stream li span { }
+ul#stream li span.date { color: lightgray; font-size: 0.75em;}
+ul#stream li span.user { font-weight: bold; text-decoration: underline; }
+ul#stream li p { display: inline; }
+
+div#stats {
+	margin-top: 50px;
+	font-weight: 700;
+}
+
+div #stats div {
+	width: 470px;
+	display: inline-block;
+	height: 180px;
+	text-shadow: 2px 2px rgba(18, 18, 18, 0.5);
+}
+
+div#stats span {
+	font-size: 104px;
+}
+	
+div#zombies  {
+	color: #86ca88;
+}
+
+div#survivors  {
+	color: #ef466c;
+}
+
+div#tweets  {
+	color: #fdb74a;
+}
+
+div#questions  {
+	color: #a2ddf9;
+}
+
+div#answers {}
+div#stats div b {
+	padding-left: 50px;
+	font-size: 50px;
+	vertical-align: top;
+}

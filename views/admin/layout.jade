@@ -1,0 +1,43 @@
+// admin layout
+doctype 5
+html
+	head
+		title #{title}
+		meta(name='Content-Type', content='text/html', charset='utf-8')
+		script(src='http://code.jquery.com/jquery.min.js')
+		script(src='/js/admin.js')
+
+		link(rel='stylesheet', href='/css/reset.css')
+		link(rel='stylesheet', href='/css/bootstrap.table.css')
+		link(rel='stylesheet', href='/css/admin.css')
+		link(rel="shortcut icon", type="image/png", href="/images/logo.png")
+
+		block head
+	body
+		div#logo
+		header.admin
+			block title
+			nav 
+					ul
+						li 
+							a(href='/admin/') index
+						li 
+							a(href='/admin/survivor') survivors
+						li 
+							a(href='/admin/zombie') zombies
+						li 
+							a(href='/admin/question') questions
+						li 
+							a(href='/admin/answer') answers
+						li 
+							a(href='/admin/tweet') tweets
+						li 
+							a(href='/admin/stream') stream
+		div.wrapper
+			block content
+			
+			footer
+				p Made with <span>&hearts;</span> & NodeJS
+				block footer
+
+	script(src='/js/ga.js')		

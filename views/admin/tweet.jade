@@ -1,0 +1,30 @@
+// admin/question.jade - main view
+extends layout
+
+block head
+	script(src='/js/admin.js')
+
+block title
+	h1= title
+
+block content
+	div
+		table.table.table-hover
+			tr
+				th screen_name
+				th text
+				th isReply
+				th isAnswer
+				th retweeted
+				th created_at
+			each tweet in tweets
+				tr
+					td #{tweet.screen_name}
+					td #{tweet.text}
+					td #{tweet.isReply}
+					td #{tweet.isAnswer}
+					td #{tweet.retweeted}
+					td #{tweet.created_at}
+
+
+		

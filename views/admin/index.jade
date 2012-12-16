@@ -1,0 +1,22 @@
+// admin/index.jade - main view
+extends layout
+
+block title
+	h1= title
+block content
+
+	p Welcome to the dashboard of #ENMI12 Zombie Game for Paris 8
+
+	div#stats
+		div#zombies 
+			span #{totalZombies} 
+			b Zombies
+		div#tweets 
+			span #{totalTweets}
+			b Tweets
+		div#questions 
+			span #{totalQuestions} 
+			b Questions
+		div#survivors 
+			span #{totalSurvivors}
+			b Survivors

@@ -1,0 +1,22 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+	CDNL & THYP - EQUIPE  1
+	Sophie			-- design 	-- 
+	Jérémy			-- design 	-- @JeremyMaurel
+	Steven			-- design 	-- @steven_mengin
+	Daniello 		-- dev	 	-- 
+	Nicolas 		-- dev    	-- @jackismissing
+	Lucas			-- dev    	-- @ltb_lucas
+
+# THANKS
+
+	All other teams, Paris 8, Gobelins & CDNL
+
+# TECHNOLOGY COLOPHON
+	NodeJS (Express, Socket.io, Jade, cli-color, ntwitter)
+	Twitter Stream API + REST API
+   	HTML5 (HTML5 Boilerplate + WebSockets)
+	CSS3
+   	jQuery
