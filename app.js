@@ -94,7 +94,7 @@ var server = http.createServer(app).listen(app.get('port'), function() {
 
 /* Socket - DEBUG MODE ACTIVATED */
 var io  = require('socket.io').listen(server, { log: true});
-io.set('log level', 2);
+io.set('log level', 3);
 
 
 /* Database & Models - MongoDB + Mangoose \o/ - even if I prefer otters. Or meerkats. Meerkats are awesome dude! */
@@ -185,9 +185,13 @@ twit.getFollowersIds('enmi_mczombie', function(nullvar, json) {
 
 /* Are we limited ? */
 twit.rateLimitStatus(function(nullvar, json) {
-	console.log(c_status('[status]') + ' Application : ', json.resources.application);
-	var t = new Date(json.resources.followers['/followers/ids'].reset * 1000);
-	console.log(c_status('[status]') + ' Followers IDs : ', json.resources.followers,'[ Reset @ '+t.toLocaleString() + ' ]');
+	if(json) {
+		console.log(c_status('[status]') + ' Application : ', json.resources.application);
+		var t = new Date(json.resources.followers['/followers/ids'].reset * 1000);
+		console.log(c_status('[status]') + ' Followers IDs : ', json.resources.followers,'[ Reset @ '+t.toLocaleString() + ' ]');
+	} else {
+		console.log(c_error('[error]') + ' Cannot get status from Twitter API', nullvar, json);
+	}
 });
 
 function getFollowers() {

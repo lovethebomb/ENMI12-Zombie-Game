@@ -70,6 +70,7 @@ font-weight:200;
 	position:relative;
 	top:9px;
 	left:41px;
+	text-shadow:1px 1px #555;
 }
 
 #bouton a:link, #bouton a:visited{
@@ -251,7 +252,13 @@ font-weight:200;
 }
 
 @media screen and (max-width: 400px) {
-
+	header {
+		height:80px;
+	}
+	#headerBackground img{
+		position:relative;
+		top:0px;
+	}
 	
 	#introduction article {
 		width:300px;
