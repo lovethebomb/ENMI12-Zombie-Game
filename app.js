@@ -54,12 +54,12 @@ function errorHandler(err, req, res, next) {
 
 function auth(user, pass) {
 	console.log(c_server('[admin]') + ' ASKED ');
-	return 'admin' === user && 'admin' === pass;
+	return 'admin' === user && 'zombie' === pass;
 }
 
 function authorized(req, res) {
 	console.log(c_server('[admin]') +' ALLOWED ' + req.connection.remoteAddress);
-	// res.end('authorized!');
+	
 }
 
 /* Express - Configuration */
@@ -123,28 +123,28 @@ var tweets = new Tweets();
 // app.post('/admin*', authorized);
 
 /* Routes - Zombies */
-app.get('/admin', adminRoute.index.bind(adminRoute));
-app.get('/admin/', adminRoute.index.bind(adminRoute));
+app.get('/admin', express.basicAuth(auth), adminRoute.index.bind(adminRoute));
+app.get('/admin/', express.basicAuth(auth), adminRoute.index.bind(adminRoute));
 
-app.get('/admin/question', questions.showQuestions);
-app.get('/admin/question/activate/:qid', questions.activateQuestion);
-app.post('/admin/question/add', questions.addQuestion);
-app.get('/admin/question/end', questions.endGame);
+app.get('/admin/question', express.basicAuth(auth), questions.showQuestions);
+app.get('/admin/question/activate/:qid', express.basicAuth(auth), questions.activateQuestion);
+app.post('/admin/question/add', express.basicAuth(auth), questions.addQuestion);
+app.get('/admin/question/end', express.basicAuth(auth), questions.endGame);
 
 /* Routes - Zombies */
-app.get('/admin/zombie', zombies.showZombies);
-app.post('/admin/zombie/add', zombies.addZombie);
+app.get('/admin/zombie', express.basicAuth(auth), zombies.showZombies);
+app.post('/admin/zombie/add', express.basicAuth(auth), zombies.addZombie);
 
 /* Routes - Survivors */
-app.get('/admin/survivor', survivors.showSurvivors);
-app.post('/admin/survivor/add', survivors.addSurvivor);
+app.get('/admin/survivor', express.basicAuth(auth), survivors.showSurvivors);
+app.post('/admin/survivor/add', express.basicAuth(auth), survivors.addSurvivor);
 
 /* Routes - Answers */
-app.get('/admin/answer', answers.showAnswers);
+app.get('/admin/answer', express.basicAuth(auth), answers.showAnswers);
 
 /* Routes - Tweets */
-app.get('/admin/tweet', tweets.showTweets);
-app.get('/admin/stream', adminRoute.stream.bind(adminRoute));
+app.get('/admin/tweet', express.basicAuth(auth), tweets.showTweets);
+app.get('/admin/stream', express.basicAuth(auth), adminRoute.stream.bind(adminRoute));
 
 /* Routes - Main */
 app.get('/', function(req, res){ showMainPage(req, res); });
