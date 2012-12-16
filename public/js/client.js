@@ -27,7 +27,6 @@
 function startSocket() {
 	/* Create socket */
 	var socket = io.connect();
-	io.set('transport', 'xhr-polling');
 	
 	/* Get some output */
 	socket.on('connecting', function() {

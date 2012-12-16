@@ -3,10 +3,12 @@
 
 # TEAM
 	CDNL & THYP - EQUIPE  1
+	Kahina			-- 
 	Sophie			-- design 	-- 
 	Jérémy			-- design 	-- @JeremyMaurel
 	Steven			-- design 	-- @steven_mengin
-	Daniello 		-- dev	 	-- 
+
+	Danielo 		-- dev	 	-- 
 	Nicolas 		-- dev    	-- @jackismissing
 	Lucas			-- dev    	-- @ltb_lucas
 
