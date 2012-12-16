@@ -256,7 +256,15 @@ Survivors.prototype = {
 				survivor.screen_name = items[i].twitter_screen_name;
 				survivor.zombies = items[i].zombies_count;
 				survivor.zombies_killed = items[i].zombies_killed;
-				var img = items[i].twitter_profile_img_url.substring(0, items[i].twitter_profile_img_url.length-11) +'.png';
+				
+				if( substring(items[i].twitter_profile_img_url.length-4, items[i].twitter_profile_img_url.length) == '.' || substring(items[i].twitter_profile_img_url.length-3, items[i].twitter_profile_img_url.length) == 'j') {
+					var img = items[i].twitter_profile_img_url.substring(0, items[i].twitter_profile_img_url.length-12) +'.jpeg';	
+				}
+				// png
+				else {
+					var img = items[i].twitter_profile_img_url.substring(0, items[i].twitter_profile_img_url.length-11) +'.png';
+				}
+				
 				survivor.img = img;
 				survivor.bgColor = items[i].twitter_profile_background_color;
 				survivors.push(survivor);
