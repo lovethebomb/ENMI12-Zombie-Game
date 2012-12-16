@@ -24,17 +24,17 @@ html
 				div#participer
 					div#bouton
 						img(id='oiseau', src="/images/oiseau.png", alt="Oiseau")
-						a.twitter-follow-button(href="https://twitter.com/enmi_mczombie", data-show-count="false", data-lang="en", data-size="large") Participer au jeu
+						a.twitter-follow-button(href="https://twitter.com/enmi_mczombie", data-show-count="false", data-lang="en", data-size="medium") Participer au jeu
 			div#compteurAutoMargin
 				div#compteurWrapper
 					div
 						div#compteur
 							h3 Temps restant
-							span 02
+							span#hours 00
 							span :
-							span 35
+							span#minutes 00
 							span :
-							span 24
+							span#seconds 00
 			section#liste
 
 				each survivor in survivors
@@ -48,4 +48,5 @@ html
 							span.rightScore #{survivor.zombies_killed}
 		footer.credits
 			p Made with <span>&hearts;</span> & NodeJS
-	script(src='/js/ga.js')		
+	script(src='/js/ga.js')
+	script(src='/js/client.js')		

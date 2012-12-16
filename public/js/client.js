@@ -10,13 +10,14 @@
 });
 
 /* Twitter - load widgets.js & follow button */
+/* As we can design web intents buttons and they mess up things, currently desactivated
   window.twttr = (function (d,s,id) {
     var t, js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
     js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
     return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
   }(document, "script", "twitter-wjs"));
-
+*/
 
 /**
  * function startSocket()
@@ -34,19 +35,6 @@ function startSocket() {
 	socket.on('connect', function() { 
 		console.log('[socket] connected'); 
 		socket.emit('channel', 'client');
-
-
-		/* Manage twitter */
-		socket.on('twitter', function(data) {
-			console.log('[tweet] :', data);
-
-			var replacePattern = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-			var replacedText = (data.text).replace(replacePattern, '<a href="$1" target="_blank">$1</a>');
-			$("<li></li>").html("<div class=\"g\"><div class=\"c1\">[" + data.user.screen_name + "]</div> <div class=\"c2\">▸</div> " + "<div class=\"c3\"><font color=\"red\">" + replacedText + "</font></div></div>")
-			.prependTo("ul#tweets")
-			.css({opacity:0}).slideDown("slow").animate({opacity:1},"slow");
-
-		});
 	});
 	socket.on('connect_failed', function() {
 		console.log('[socket] lost connectiong');
@@ -60,24 +48,6 @@ function startSocket() {
 		console.log('[survivor]',data);
 	});
 
-	/* Zombies */
-	socket.on('zombies', function(data) {
-		console.log('[zombies]',data);
-	});
-
-
-	/* Hook twitter click event */
-	twttr.ready(function (twttr) {
-		twttr.events.bind('follow',   followTwitter);
-		console.log('clikdo n follow button');
-	}
-
-	function followTwitter(intent_event) {
-	    if (intent_event) {
-	      var label = intent_event.data.user_id + " (" + intent_event.data.screen_name + ")";
-	      socket.emit('follower', follower);
-	    };
-  	}
 }
 
 /* Unusable at this time */
@@ -88,4 +58,87 @@ function startSocket() {
  */
 function errorSocket() {
 	console.log('[socket] Error: Could not load socket, nodejs server is down ?');
+}
+
+
+/* Timer */
+
+$(function() {
+	console.log('timer loaded');
+	var endDate = new Date("Dec 17 16:30:00 2012");
+	var compteRebours = new CompteARebours(endDate);
+});
+
+function CompteARebours(date) {
+	var self = this;
+	this.date = date;
+	this.setCompte(date);
+
+	window.setInterval(function(){
+		self.setCompte(self.date);
+	}, 1000);
+}
+
+CompteARebours.prototype.setCompte = function(date) {
+
+	this.endDate = date;
+	// On récup la date actuelle
+	var currentDate = new Date();
+	// Nombre de secondes restantes (= nb millisecondes / 1000)
+	var secondeRestantes = (this.endDate - currentDate) / 1000;
+	// Nombre heures restantes (on tronque le result a la virgule)
+	var heuresRestantesWithSeconds = secondeRestantes / (60*60);
+	var heuresRestantes = Math.floor(heuresRestantesWithSeconds);
+	// On récup la valeur à droite de la virgule pour avoir les minutes
+	var minutesRestantesWithSeconds = (heuresRestantesWithSeconds - heuresRestantes) * 60;  
+	// On tronque à la virgule 
+	var minutesRestantes = Math.floor(minutesRestantesWithSeconds);
+	// Récup du nombre a droite de la virgule pour le nombre de secondes restantes
+	var secondesWithMilliSeconds = (minutesRestantesWithSeconds - minutesRestantes) * 60;
+	var secondesRestantes = Math.floor(secondesWithMilliSeconds);
+	// On ajoute un 0 devant les unités si < 10
+
+	if (heuresRestantes < 10) {
+		(heuresRestantes).toString();
+		heuresRestantes = '0'+heuresRestantes;
+		$("span#hours").html('');
+
+	} else {(heuresRestantes).toString();}
+
+	if (minutesRestantes < 10) {
+
+		(minutesRestantes).toString();
+		minutesRestantes = '0'+minutesRestantes;
+		$("span#minutes").html('');
+
+	} else {
+		(minutesRestantes).toString();
+
+	}
+
+	if (secondesRestantes < 10) {
+
+		(secondesRestantes).toString();
+		secondesRestantes = '0'+secondesRestantes;
+		$("span#seconds").html('');
+
+
+	} else {
+		(secondesRestantes).toString();
+	}
+
+
+
+	if ((this.endDate - currentDate) <= 0) {
+
+		heuresRestantes = "00";
+		minutesRestantes = "00";
+		secondesRestantes = "00";
+
+	}
+
+	$("span#hours").html(heuresRestantes);
+	$("span#minutes").html(minutesRestantes);
+	$("span#seconds").html(secondesRestantes);
+
 }

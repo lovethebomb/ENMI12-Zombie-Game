@@ -255,18 +255,7 @@ function initTwitter(socket) {
 			if(!found) {
 				console.log(c_rest('[game]') + c_socket(' ' + data.user.screen_name)+ ' wont play with us : not following account');
 				// TODO : send tweet to user to tell them to follow us if they want to play
-				console.log('mctwit', mctwit);
-				mctwit.verifyCredentials(function (err, res) {
-					if(err)
-						console.log(c_rest('[game]') + ' Welcome message error', err);
-					console.log(c_rest('[game]') + ' Sent welcome message to' + c_socket('@'+data.user.screen_name), res);
-				}).updateStatus('@'+data.user.screen_name + ' ' + 'Suivez ce compte pour jouer (patientez 2 minutes, Twitter synchronise)',
-					function (err, res) {
-						if(err)
-							console.log(c_rest('[game]') + ' Welcome message - status error', err);
-						// console.log('res', res);
-					}
-				);
+				sendFollowUs(data);
 			}
 		});
 
@@ -396,4 +385,26 @@ function showMainPage(req, res) {
 	survivors.getSurvivors( function(data) {
 		res.render('index',{title: 'Conf. VS Zombies - #ENMI12 ', survivors: data});	
 	});
+}
+
+function sendFollowUs(data) {
+	console.log('sendFollowUs() called');
+	twit.verifyCredentials(function (err, res) {
+		if(err)
+			console.log(c_rest('[game]') + ' WM : Auth failed', err);
+		else {
+			console.log(c_rest('[game]') + ' WM : Auth success ');
+			sendTweet();
+		}
+	});
+
+	function sendTweet() {
+		twit.updateStatus('@'+ data.user.screen_name + ' Suivez ce compte pour jouer (patientez 2 minutes, Twitter synchronise)',{'in_reply_to_status_id': data.id}, function (err, res) {
+			if(err)
+				console.log(c_rest('[game]') + ' WM : status error', err);
+			else 
+				console.log(c_rest('[game]') + ' WM : followUs message sent', err);
+		});
+	}
+	
 }
