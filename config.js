@@ -14,6 +14,7 @@ module.exports.settings = {
 
 /* TODO - Zombies auto tweets */
 /* Work in progress */
+/* ntwitter.createFriendship / ntwitter.destroyFriendship */
 module.exports.accounts = Accounts;
 
 function Accounts(zombies, callback) {
